@@ -3,60 +3,102 @@ import { render } from "react-dom";
 
 import data from "./data.json";
 import Product from "./components/Product";
+import ProductHeader from "./components/ProductHeader";
+import Leftsection from "./components/Leftsection.js";
 
 import "./styles/main.css";
 
-export default function App() {
-  return (
-    <main className="main">
-      <div className="filters">
-        <h3 className="sizes-heading">Sizes:</h3>
-        <div className="available-sizes">
-          <label>
-            <input className="checkbox-input" type="checkbox" value="XS" />
-            <span className="checkmark-span">XS</span>
-          </label>
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sortby: [...data.products],
+      active: "default",
+      filterdata: []
+    };
+  }
+
+  // Handle sort function
+  handlesort = () => {
+    return this.state.sortby.sort((val1, val2) => {
+      return val2.price - val1.price;
+    });
+  };
+
+  handlechangesort = event => {
+    this.setState({ active: event.target.value });
+    this.handleSortViews();
+  };
+
+  // Handle filter function
+  filterdata = size => {
+    let filteredarr = this.state.sortby.filter(item =>
+      item.availableSizes.some(filtered => filtered === size)
+    );
+    this.setState({
+      filterdata: this.state.filterdata.concat(filteredarr),
+      active: "filtered"
+    });
+  };
+
+  handleSortViews = () => {
+    switch (this.state.active) {
+      case "default":
+        this.setState({ sortby: [...data.products] });
+        break;
+
+      case "lowtohigh":
+        this.setState({ sortby: this.handlesort() });
+        break;
+
+      case "hightolow":
+        this.setState({ sortby: this.handlesort().reverse() });
+        break;
+
+      case "filtered":
+        this.setState({ sortby: this.filterdata() });
+        break;
+
+      default:
+        this.setState({ sortby: [...data.products] });
+    }
+  };
+
+  render() {
+    return (
+      <>
+        <main className="main">
+          <Leftsection filtereddata={this.filterdata} />
+
+          <div className="right-container">
+            <ProductHeader handlechangesort={this.handlechangesort} />
+            {/* 
+            <div className="rightcontainer-item">
+              {this.state.filterdata.length
+                ? this.state.filterdata.map(item => <Product {...item} />)
+                : this.state.sortby.map(item2 => <Product {...item2} />)}
+            </div> */}
+
+            {/* <div className="maincontainer"> */}
+            {this.state.sortby.map(item => (
+              <Product {...item} />
+            ))}
+            {/* </div> */}
+          </div>
+        </main>
+        {/* <div className="cart-bag">
+        <div className="cartbag-crossbutton">x</div>
+        <div className="cartbag-content">
+          <div className="cartbag-header">
+          <span className="icon">
+
+          </span>
+          </div>
         </div>
-        <div className="available-sizes">
-          <label>
-            <input className="checkbox-input" type="checkbox" value="S" />
-            <span className="checkmark-span">S</span>
-          </label>
-        </div>
-        <div className="available-sizes">
-          <label>
-            <input className="checkbox-input" type="checkbox" value="M" />
-            <span className="checkmark-span">M</span>
-          </label>
-        </div>
-        <div className="available-sizes">
-          <label>
-            <input className="checkbox-input" type="checkbox" value="ML" />
-            <span className="checkmark-span">ML</span>
-          </label>
-        </div>
-        <div className="available-sizes">
-          <label>
-            <input className="checkbox-input" type="checkbox" value="L" />
-            <span className="checkmark-span">L</span>
-          </label>
-        </div>
-        <div className="available-sizes">
-          <label>
-            <input className="checkbox-input" type="checkbox" value="XL" />
-            <span className="checkmark-span">XL</span>
-          </label>
-        </div>
-        <div className="available-sizes">
-          <label>
-            <input className="checkbox-input" type="checkbox" value="XXL" />
-            <span className="checkmark-span">XXL</span>
-          </label>
-        </div>
-      </div>
-      <Product />
-    </main>
-  );
+      </div> */}
+      </>
+    );
+  }
 }
 
 render(<App />, document.getElementById("root"));

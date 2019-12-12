@@ -181,9 +181,35 @@ input {
   color: #1b1a20;
   background-color: #ececec;
   border: 1px solid transparent;
+  cursor: pointer;
+}
+.checkmark-span:hover {
+  border: 1px solid black;
+}
+.starheading {
+  font-size: 15px;
+  color: #c7b1b0;
+}
+.starbutton-anchor {
+  display: flex;
+  text-align: center;
+  margin-top: 1rem;
+  justify-content: center;
+}
+.starbutton {
+  background-color: #f0f4f7;
+}
+.no.ofstars {
+  background-color: #ffffff;
+}
+.selectinput {
+  background-color: #fff;
+  border: 0.5px solid grey;
+  padding: 3px;
 }
 
 /* right side */
+
 .right-container {
   display: flex;
   flex-wrap: wrap;
@@ -211,6 +237,12 @@ input {
   margin-bottom: 30px;
   border: 1px solid transparent;
   cursor: pointer;
+}
+.rightcontainer-item:hover .rightcontainer-itembutton {
+  background-color: rgb(214, 214, 32);
+}
+.rightcontainer-item:hover {
+  border: 1px solid rgb(219, 215, 215);
 }
 .freeshipping {
   position: absolute;
@@ -249,4 +281,49 @@ img {
 }
 .display {
   display: flex;
+}
+
+.bold {
+  font-size: 30px;
+  font-weight: bold;
+}
+hr {
+  color: yellow;
+}
+.hr-line {
+  width: 2rem;
+}
+/* when clicks on add to cart */
+.cart-bag {
+  right: 0;
+  position: fixed;
+  top: 0;
+  width: 450px;
+  height: 100%;
+  background-color: #1b1a20;
+  box-sizing: border-box;
+  -webkit-transition: right 0.2s;
+  transition: right 0.2s;
+}
+.cartbag-crossbutton {
+  width: 50px;
+  height: 50px;
+  color: #ececec;
+  background-color: #1b1a20;
+  text-align: center;
+  line-height: 50px;
+  position: absolute;
+  top: 0;
+  left: -50px;
+  cursor: pointer;
+}
+.cartbag-content {
+  height: 100%;
+  overflow-y: scroll;
+}
+.cartbag-header {
+  color: #ececec;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 45px 0;
 }
