@@ -361,3 +361,12 @@ hr {
   box-sizing: border-box;
   padding: 5%;
 }
+.cartbag-img {
+  vertical-align: middle;
+  width: 15%;
+  margin-right: 3%;
+}
+.cart-itemimg {
+  width: 100%;
+  height: auto;
+}

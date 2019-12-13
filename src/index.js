@@ -43,6 +43,17 @@ class App extends React.Component {
     });
   };
 
+  // Handle Add to cart
+  addcart = additem => {
+    this.setState({ cart: this.state.cart.concat(additem) });
+  };
+
+  handleCheckoutPage = () => {
+    this.setState({
+      active: "default"
+    });
+  };
+
   handleSortViews = () => {
     switch (this.state.active) {
       case "default":
@@ -76,10 +87,15 @@ class App extends React.Component {
             <ProductHeader handlechangesort={this.handlechangesort} />
             {this.state.filterdata.length
               ? this.state.filterdata.map(newarray => <Product {...newarray} />)
-              : this.state.sortby.map(item => <Product {...item} />)}
+              : this.state.sortby.map(item => (
+                  <Product {...item} addcart={this.addcart} />
+                ))}
           </div>
         </main>
-        <Cart />
+        <Cart
+          cart={this.state.cart}
+          handleCheckoutPage={this.handleCheckoutPage}
+        />
       </>
     );
   }
