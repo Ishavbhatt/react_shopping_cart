@@ -322,8 +322,42 @@ hr {
   overflow-y: scroll;
 }
 .cartbag-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: #ececec;
   box-sizing: border-box;
   text-align: center;
   padding: 45px 0;
+}
+.bag-icon {
+  width: 40px;
+  height: 40px;
+}
+.bag-quantity {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  color: #0c0b10;
+  font-weight: 700;
+  font-size: 0.7em;
+  text-align: center;
+  line-height: 18px;
+  border-radius: 50%;
+  background-color: #eabf00;
+}
+.header-title {
+  font-weight: 700;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+.cartbag-container {
+  position: relative;
+  min-height: 280px;
+  padding-bottom: 200px;
+}
+.cartbag-item {
+  position: relative;
+  box-sizing: border-box;
+  padding: 5%;
 }

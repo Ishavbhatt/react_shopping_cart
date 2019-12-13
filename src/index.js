@@ -5,6 +5,7 @@ import data from "./data.json";
 import Product from "./components/Product";
 import ProductHeader from "./components/ProductHeader";
 import Leftsection from "./components/Leftsection.js";
+import Cart from "./components/Cart.js";
 
 import "./styles/main.css";
 
@@ -14,7 +15,8 @@ class App extends React.Component {
     this.state = {
       sortby: [...data.products],
       active: "default",
-      filterdata: []
+      filterdata: [],
+      cart: []
     };
   }
 
@@ -32,8 +34,8 @@ class App extends React.Component {
 
   // Handle filter function
   filterdata = size => {
-    let filteredarr = this.state.sortby.filter(item =>
-      item.availableSizes.some(filtered => filtered === size)
+    let filteredarr = this.state.sortby.filter(newarray =>
+      newarray.availableSizes.some(filtered => filtered === size)
     );
     this.setState({
       filterdata: this.state.filterdata.concat(filteredarr),
@@ -72,30 +74,12 @@ class App extends React.Component {
 
           <div className="right-container">
             <ProductHeader handlechangesort={this.handlechangesort} />
-            {/* 
-            <div className="rightcontainer-item">
-              {this.state.filterdata.length
-                ? this.state.filterdata.map(item => <Product {...item} />)
-                : this.state.sortby.map(item2 => <Product {...item2} />)}
-            </div> */}
-
-            {/* <div className="maincontainer"> */}
-            {this.state.sortby.map(item => (
-              <Product {...item} />
-            ))}
-            {/* </div> */}
+            {this.state.filterdata.length
+              ? this.state.filterdata.map(newarray => <Product {...newarray} />)
+              : this.state.sortby.map(item => <Product {...item} />)}
           </div>
         </main>
-        {/* <div className="cart-bag">
-        <div className="cartbag-crossbutton">x</div>
-        <div className="cartbag-content">
-          <div className="cartbag-header">
-          <span className="icon">
-
-          </span>
-          </div>
-        </div>
-      </div> */}
+        <Cart />
       </>
     );
   }
