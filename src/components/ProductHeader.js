@@ -9,11 +9,9 @@ const ProductHeader = props => {
       <div className="sort">
         Order by
         <select class="select-input" onChange={props.handlechangesort}>
-          <option selected disabled>
-            Select
-          </option>
-          <option value="lowtohigh">Lowest To Highest</option>
-          <option value="hightolow">Highest To Lowest</option>
+          <option value="default">Select</option>
+          <option value="lowtohigh">Highest To Lowest</option>
+          <option value="hightolow">Lowest To Highest</option>
         </select>
       </div>
     </div>

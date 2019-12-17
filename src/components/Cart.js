@@ -1,7 +1,10 @@
 import React from "react";
 import data from "../data.json";
 
-const Cart = props => {
+import "../styles/main.css";
+import { render } from "@testing-library/react";
+
+export default function Cart(props) {
   return (
     <div className="cart-bag">
       <div onClick={props.handleCheckoutPage} className="cartbag-crossbutton">
@@ -26,27 +29,47 @@ const Cart = props => {
                     alt=""
                   />
                 </div>
-                <div className="cartitemdetail">
+                <div className="cartitem-detail">
                   <h4 className="cartitem-title">{item.title}</h4>
                   <h4 className="cartitem-style">{item.style}</h4>
-                  <h4 className="cartitem-quantity">Quantity</h4>
+                  <h4 className="cartitem-quantity">
+                    Quantity: {item.quantity}
+                  </h4>
+                </div>
+                <div className="cart-rightdata">
+                  <p
+                    className="cart-itemdelete"
+                    onClick={() => props.handleItemDelete(item)}
+                  >
+                    ✗
+                  </p>
+                  <p className="cart-itemprice">$ {item.price}</p>
+                  <div>
+                    <button
+                      className="cartitem-dec"
+                      onClick={() => props.handleDecrement(item.id)}
+                    >
+                      -
+                    </button>
+                    <button
+                      className="cartitem-inc"
+                      onClick={() => props.handleIncrement(item.id)}
+                    >
+                      +
+                    </button>
+                  </div>
                 </div>
               </div>
-              <div className="cart-rightdata">
-                <p className="cart-itemdelete">✗</p>
-                <p className="cart-itemprice">$ {item.price}</p>
-                <div>
-                  <button className="cartitem-dec">-</button>
-                  <button className="cartitem-inc">+</button>
-                </div>
-              </div>
-              <button>checkout</button>
             </div>
           ))}
+
+          <div className="checkout-button" onClick={props.checkout}>
+            CHECKOUT
+          </div>
         </div>
       </div>
     </div>
   );
-};
+}
 
-export default Cart;
+// export default Cart;
