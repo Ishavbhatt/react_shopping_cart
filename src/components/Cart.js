@@ -48,13 +48,13 @@ export default function Cart(props) {
                       <div>
                         <button
                           className="cartitem-dec"
-                          onClick={() => props.handleDecrement(item.id)}
+                          onClick={() => props.handleDecrement(item)}
                         >
                           -
                         </button>
                         <button
                           className="cartitem-inc"
-                          onClick={() => props.handleIncrement(item.id)}
+                          onClick={() => props.handleIncrement(item)}
                         >
                           +
                         </button>

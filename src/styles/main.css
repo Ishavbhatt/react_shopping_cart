@@ -407,6 +407,7 @@ hr {
   cursor: pointer;
 }
 .cart-itemdelete {
+  color: #0c0b10;
   margin-left: 25px;
 }
 .cart-itemdelete:hover {

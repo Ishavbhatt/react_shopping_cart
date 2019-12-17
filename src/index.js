@@ -21,7 +21,7 @@ class App extends React.Component {
       filterdata: [],
       cart: [],
       Product: [...data.products],
-      isCartOpen: "false"
+      test: null
     };
   }
 
@@ -33,33 +33,39 @@ class App extends React.Component {
 
   // Delete a item
   handleItemDelete = item => {
-    console.log(item);
     let delitem = Object.assign([], this.state.cart);
     delitem.splice(item, 1);
     this.setState({ cart: delitem });
   };
 
   // // Item Increment
-  handleIncrement = id => {
-    var incitem = this.state.cart;
-    incitem.forEach(item => {
-      if (item.id === id) {
-        item.quantity = item.quantity + 1;
-      }
-      this.setState({ cart: incitem });
-    });
-  };
-
-  handleDecrement = id => {
-    var decitem = this.state.cart;
-    decitem.forEach(item => {
-      if (item.id === id) {
-        if (item.quantity > 1) {
-          item.quantity = item.quantity - 1;
+  handleIncrement = item => {
+    const inc = this.state.cart.find(product => product.id == item.id);
+    if (inc) {
+      this.state.cart.forEach(product => {
+        if (product.id === item.id) {
+          product.quantity += 1;
+          this.setState({
+            test: "state updated"
+          });
         }
-      }
-      this.setState({ cart: decitem });
-    });
+      });
+    }
+  };
+  handleDecrement = item => {
+    const inc = this.state.cart.find(product => product.id == item.id);
+    if (inc) {
+      this.state.cart.forEach(product => {
+        if (product.id === item.id) {
+          if (product.quantity > 1) {
+            product.quantity -= 1;
+            this.setState({
+              test: "state updated"
+            });
+          }
+        }
+      });
+    }
   };
 
   // Handle sort function
@@ -190,6 +196,8 @@ class App extends React.Component {
               checkout={this.checkout}
               cart={this.state.cart}
               handleCheckoutPage={this.handleCheckoutPage}
+              handleIncrement={this.handleIncrement}
+              handleDecrement={this.handleDecrement}
             />
           ) : (
             ""
