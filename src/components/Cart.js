@@ -19,7 +19,6 @@ export default function Cart(props) {
               <span className="bag-quantity">{props.cart.length}</span>
             </span>
             <span className="header-title">Cart</span>
-            {/* </div> */}
             <div className="cartbag-container">
               {props.cart.map(item => (
                 <div className="cartbag-item">
