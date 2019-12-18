@@ -181,15 +181,20 @@ class App extends React.Component {
     return (
       <>
         <div className="gitandicon">
-          <Corner />
-          <span onClick={this.changeopen} className="quantities">
-            <img
-              className="cartimg"
-              src="static/bag-icon.png"
-              alt="cart-icon"
-            ></img>
+          <div>
+            <Corner />
+          </div>
+          <div onClick={this.changeopen} className="quantities">
+            <div>
+              <img
+                className="cartimg"
+                src="static/bag-icon.png"
+                alt="cart-icon"
+              ></img>
+            </div>
             <span className="quantities-content">{this.state.cart.length}</span>
-          </span>
+          </div>
+
           {this.state.isopen ? (
             <Cart
               handleItemDelete={this.handleItemDelete}

@@ -232,6 +232,9 @@ input {
 .sort {
   float: right;
 }
+.select-input {
+  margin: 10px;
+}
 .rightcontainer-item {
   width: 25%;
   position: relative;
@@ -328,6 +331,7 @@ hr {
   overflow-y: scroll;
 }
 .cartbag-header {
+  padding: 30px 0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -420,7 +424,7 @@ hr {
   padding: 5%;
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 95%;
   height: 200px;
   z-index: 2;
   background-color: #1b1a20;
@@ -433,13 +437,11 @@ hr {
   padding: 15px 0;
   margin-top: 40px;
   cursor: pointer;
-  /* position: fixed;
-  bottom: 0;
-  width: 438px; */
 }
 /* cart */
 .gitandicon {
   display: flex;
+  justify-content: flex-end;
 }
 .cartimg {
   height: 2rem;
@@ -447,11 +449,11 @@ hr {
   padding: 0.5rem;
 }
 .quantities {
-  background-color: black;
-  align-items: center;
-  text-align: center;
   position: fixed;
-  right: 6px;
+  background-color: #000;
+  background-size: 50%;
+  height: 60px;
+  cursor: pointer;
   z-index: 2;
 }
 .quantities-content {
@@ -465,6 +467,9 @@ hr {
   line-height: 18px;
   border-radius: 50%;
   background-color: #eabf00;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
 }
 /* TotalAmount */
 .totalamount {

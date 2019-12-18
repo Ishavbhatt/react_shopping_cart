@@ -85,12 +85,12 @@ const Leftsection = props => {
         <small className="starheading">
           Leave a star on Github if this repository was useful :)
         </small>
-        <div className="starbutton-anchor">
+        {/* <div className="starbutton-anchor">
           <button className="starbutton"> Star</button>
           <button className="no.ofstars">
             <a href="">1,011</a>
           </button>
-        </div>
+        </div> */}
       </div>
     </div>
   );
