@@ -334,7 +334,6 @@ hr {
   color: #ececec;
   box-sizing: border-box;
   text-align: center;
-  padding: 45px 0;
 }
 .bag-icon {
   width: 40px;
@@ -354,6 +353,8 @@ hr {
 }
 
 .header-title {
+  color: #fff;
+
   font-weight: 700;
   font-size: 1.2em;
   vertical-align: middle;
@@ -366,7 +367,7 @@ hr {
 
 .cartbag-item {
   box-sizing: border-box;
-  padding: 5% 0;
+  padding: 5%;
 }
 .cartbag-img {
   vertical-align: middle;
