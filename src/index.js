@@ -21,46 +21,46 @@ class App extends React.Component {
       filterdata: [],
       cart: [],
       Product: [...data.products],
-      test: null
+      test: null,
     };
   }
 
-  handlechangesort = event => {
+  handlechangesort = (event) => {
     console.log(event.target.value);
     this.setState({ active: event.target.value });
     this.handleSortViews();
   };
 
   // Delete a item
-  handleItemDelete = item => {
+  handleItemDelete = (item) => {
     let delitem = Object.assign([], this.state.cart);
     delitem.splice(item, 1);
     this.setState({ cart: delitem });
   };
 
   // // Item Increment
-  handleIncrement = item => {
-    const inc = this.state.cart.find(product => product.id == item.id);
+  handleIncrement = (item) => {
+    const inc = this.state.cart.find((product) => product.id === item.id);
     if (inc) {
-      this.state.cart.forEach(product => {
+      this.state.cart.forEach((product) => {
         if (product.id === item.id) {
           product.quantity += 1;
           this.setState({
-            test: "state updated"
+            test: "state updated",
           });
         }
       });
     }
   };
-  handleDecrement = item => {
-    const inc = this.state.cart.find(product => product.id == item.id);
+  handleDecrement = (item) => {
+    const inc = this.state.cart.find((product) => product.id === item.id);
     if (inc) {
-      this.state.cart.forEach(product => {
+      this.state.cart.forEach((product) => {
         if (product.id === item.id) {
           if (product.quantity > 1) {
             product.quantity -= 1;
             this.setState({
-              test: "state updated"
+              test: "state updated",
             });
           }
         }
@@ -87,27 +87,29 @@ class App extends React.Component {
   // Handle filter function
   filter = () => {
     let data = this.state.Product;
-    return data.filter(item => {
-      return this.state.sortby.some(size => item.availableSizes.includes(size));
+    return data.filter((item) => {
+      return this.state.sortby.some((size) =>
+        item.availableSizes.includes(size)
+      );
     });
   };
 
-  filterdata = size => {
+  filterdata = (size) => {
     if (!this.state.Product.includes(size)) {
       this.setState({ sortby: [...this.state.sortby, size] });
     } else {
       this.setState({
-        sortby: this.state.Product.filter(item => item !== size)
+        sortby: this.state.Product.filter((item) => item !== size),
       });
     }
   };
 
-  addcart = item => {
+  addcart = (item) => {
     if (this.state.cart.length) {
       var itemQuantIncresed = false;
       let cartClone = this.state.cart;
 
-      cartClone.forEach(product => {
+      cartClone.forEach((product) => {
         if (product.id === item.id) {
           product.quantity++;
           itemQuantIncresed = true;
@@ -132,7 +134,7 @@ class App extends React.Component {
   handleCheckoutPage = () => {
     this.setState({
       active: "Product",
-      isopen: false
+      isopen: false,
     });
   };
 
@@ -216,7 +218,7 @@ class App extends React.Component {
               handlechangesort={this.handlechangesort}
               data={this.state.sortby}
             />
-            {dataToFilter.map(item => (
+            {dataToFilter.map((item) => (
               <Product item={item} addcart={this.addcart} />
             ))}
           </div>

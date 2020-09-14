@@ -1,9 +1,9 @@
 import React from "react";
-import data from "../data.json";
+// import data from "../data.json";
 
 import "../styles/main.css";
 import Total from "./Total";
-import { render } from "@testing-library/react";
+// import { render } from "@testing-library/react";
 
 export default function Cart(props) {
   return (
@@ -21,7 +21,7 @@ export default function Cart(props) {
             <span className="header-title">Cart</span>
           </div>
           <div className="cartbag-container">
-            {props.cart.map(item => (
+            {props.cart.map((item) => (
               <div className="cartbag-item">
                 <div className="cartbag-centeritem">
                   <div className="cartbag-img">
